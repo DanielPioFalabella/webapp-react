@@ -1,9 +1,15 @@
 import DefaultLayout from "./layouts/DefaultLayout"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const App = () => {
   return (
     <>
-      <DefaultLayout />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
