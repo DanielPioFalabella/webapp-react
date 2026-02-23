@@ -1,0 +1,27 @@
+/* debug */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* header */
+header {
+  background-color: black;
+  color: white;
+  padding: 30px 5%;
+}
+
+/* main */
+main {
+  background-color: rgb(40, 40, 40);
+  color: white;
+  height: 100vh;
+  padding: 50px 2%;
+}
+
+.film-container {
+  width: 95%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
