@@ -1,7 +1,12 @@
+import { useParams } from "react-router-dom"
+
 const FilmDetail = () => {
-return (
-    <h1>FilmDetail</h1>
-)
+    // recupero l'id della pagina
+    const { id } = useParams()
+
+    return (
+        <h1>FilmDetail{id}</h1>
+    )
 }
 
 export default FilmDetail
