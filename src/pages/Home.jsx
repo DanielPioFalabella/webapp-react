@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import FilmCard from "../components/FilmCard";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
             .catch(err => console.log(err))
     }
 
-    // funzione di rendering per ciclare sui libri
+    // funzione di rendering per ciclare sui film
     const renderFilms = films.map((film) => {
         return (
             <FilmCard key={film.id} film={film} />
@@ -28,7 +28,9 @@ const Home = () => {
     }, [])
 
     return (
-        { renderFilms }
+        <>
+            {renderFilms}
+        </>
     )
 }
 

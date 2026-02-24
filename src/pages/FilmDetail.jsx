@@ -1,18 +1,52 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import FilmCardReview from "../components/FilmDetailReview";
+import FilmCard from "../components/FilmCard";
+import { Link } from "react-router-dom";
+import Home from "./Home";
 
 const FilmDetail = () => {
     // recupero l'id della pagina
     const { id } = useParams()
 
+    // imposto var di stato
+        const [filmReview, setFilmReview] = useState([]);
+        const [film, setFilm] = useState([]);
+
+    // imposto chiamata con axios
+        const endpoint = "http://localhost:3000/movie/"
+    
+        function fetchFilmReview() {
+            axios.get(endpoint + id)
+                .then(res => {
+                    setFilm(res.data.movie);
+                    setFilmReview(res.data.reviewResults);
+                })
+                .catch(err => console.log(err))
+        }
+
+    // funzione di rendering per ciclare sui film
+        const renderFilmReviews = filmReview.map((review) => {
+            return (
+                <FilmCardReview key={review.id} review={review} />
+            )
+        })
+
+    // eseguo la chiamata con useEffect
+            useEffect(() => {
+                fetchFilmReview()
+            }, [id])
+
     return (
         <>
-        <h1>FilmDetail{id}</h1>
         <div className="film-container">
-            <h3>title</h3>
-            <img src="" alt="" />
-            <p>genre</p>
-            <p>release year</p>
+            <FilmCard key={id} film={film}/>
+            {renderFilmReviews}
         </div>
+        <Link to="/">
+            <button>Torna alla home</button>
+        </Link>
         </>
     )
 }
