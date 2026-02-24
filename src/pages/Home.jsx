@@ -7,7 +7,7 @@ const Home = () => {
     const [films, setFilms] = useState([]);
 
     // imposto chiamata con axios
-    const endpoint = "http://localhost:3000"
+    const endpoint = "http://localhost:3000/movie"
 
     function fetchFilms() {
         axios.get(endpoint)
@@ -18,7 +18,7 @@ const Home = () => {
     // funzione di rendering per ciclare sui libri
     const renderFilms = films.map((film) => {
         return (
-            <FilmCard key={film.id}/>
+            <FilmCard key={film.id} film={film} />
         )
     })
 
@@ -28,8 +28,7 @@ const Home = () => {
     }, [])
 
     return (
-        <h1>Home</h1>
-        {renderFilms()}
+        { renderFilms }
     )
 }
 
