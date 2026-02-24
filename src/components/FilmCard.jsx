@@ -7,7 +7,7 @@ const FilmCard = ({film}) => {
             <p>{director}</p>
             <p>{genre}</p>
             <p>{release_year}</p>
-            <p>{abstract}</p>
+            <p className="abstract">{abstract}</p>
         </div>
     )
 }
