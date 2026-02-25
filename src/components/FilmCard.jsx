@@ -3,7 +3,7 @@ const FilmCard = ({film}) => {
     return (
         <div className="film-card-container">
             <h3>{title}</h3>
-            <img src={image} alt={title} />
+            <img src={`/movies_cover/${image}`} alt={title} />
             <p>{director}</p>
             <p>{genre}</p>
             <p>{release_year}</p>
