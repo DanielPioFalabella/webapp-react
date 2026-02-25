@@ -1,16 +1,18 @@
 // creo un form
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ReviewForm = () => {
-    // var di stato per salvare l'input dell'utente
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         name: "",
         text: "",
         vote: 0
-    })
+    }
+    // var di stato per salvare l'input dell'utente
+    const [formData, setFormData] = useState(initialFormData)
 
     // funzione per gestire i dati del form
-    // nel nuovo oggetto dovranno esserci i dati precedenti + il nuovo valore
     function formHandler(e) {
         setFormData({
             ...formData,
@@ -19,13 +21,22 @@ const ReviewForm = () => {
     }
 
     // funzione per gestire chiamata e submit del form
+    const {id} = useParams()
+    const endpoint = `http://localhost:3000/movie/${id}/reviews`
     // submit per nn perdere i dati al refresh della pagina
-    // fare chiamata con axios
-    // fare in modo che mi svuota i campi del form dopo aver fatto la chiamata
+    function submitHandler(e) {
+        e.preventDefault();
 
-    // return con il form e i dati da raccogliere
+        // fare chiamata con axios
+        axios.post(endpoint, formData, {headers: "Content-Type: application/json"})
+        // fare in modo che mi svuota i campi del form dopo aver fatto la chiamata
+        .then(initialFormData)
+        .catch(err => console.log(err))
+
+    }
+
     return (
-        <form onSubmit={formHandler}>
+        <form onSubmit={submitHandler}>
             <div>
                 <label>Nome</label>
                 <input
