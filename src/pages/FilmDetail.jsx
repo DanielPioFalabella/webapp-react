@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import FilmCardReview from "../components/FilmDetailReview";
 import FilmCard from "../components/FilmCard";
 import { Link } from "react-router-dom";
-import Home from "./Home";
+import ReviewForm from "../components/ReviewForm";
 
 const FilmDetail = () => {
     // recupero l'id della pagina
@@ -44,6 +44,7 @@ const FilmDetail = () => {
             <FilmCard key={id} film={film}/>
             {renderFilmReviews}
         </div>
+        <ReviewForm />
         <Link to="/">
             <button>Torna alla home</button>
         </Link>
