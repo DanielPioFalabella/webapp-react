@@ -29,9 +29,9 @@ const Home = () => {
 
     return (
         <>
-        <div className="film-container">
-            {renderFilms}
-        </div>
+            <div className="film-container">
+                {renderFilms}
+            </div>
         </>
     )
 }
